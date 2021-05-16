@@ -1,0 +1,267 @@
+<!Doctype html>
+<html lang="en">
+  <head>
+
+
+    
+ <!-- CSS only -->
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+ <link rel="preconnect" href="https://fonts.gstatic.com">
+ <link href="https://fonts.googleapis.com/css2?family=Reggae+One&display=swap" rel="stylesheet">
+ <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>My clock</title>
+ <link rel="stylesheet" href="style.css">
+ <link rel="stylesheet" href="style1.css">
+ 
+ <style>
+.datetime{
+  margin: 0 auto;
+
+  bottom: 15%;
+}
+.clock{
+  margin: 0 auto;
+  top: 15%;
+  background-color: lightskyblue;
+
+
+}
+img{
+  margin: 0 auto;
+  height: 150px;
+  width: 150px;
+position: absolute;
+bottom: 10%;
+left: 25%;
+}
+.img{
+  margin: 0 auto;
+  height: 150px;
+  width: 150px;
+position: absolute;
+bottom: 10%;
+right:100%;
+}
+#addTodo{
+  margin: 0 auto;
+  background-image: url("https://i.pinimg.com/474x/14/ee/df/14eedfafce73e0e89396fddf6f38f9ff.jpg");
+  background-size: cover;
+  bottom: 25%;
+  left:75%;
+  height: 50px;
+  width: 50px;
+  position: sticky
+  ;
+}
+ </style>
+
+   
+  </head>
+  <body> 
+
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">Web Lab</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link " aria-current="page" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " aria-current="page" href="index.html">Help</a>
+            </li>
+            <li class="nav-item">
+             <a class="dropdown-item" href="age.html">Age Calculator</a>
+            </li>
+            <li class="nav-item">
+            <a class="dropdown-item" href="todo.html">To-Do App</a>
+             
+            </li>
+            
+           
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Clocky
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li> <a class="nav-link active" aria-current="page" href="index1.html">Clock</a></li>
+                <a class="dropdown-item disabled" href="#">Clocky Menu</a>
+                <li><hr class="dropdown-divider"></li>
+               <li><a class="nav-link" href="alarm.html">Alarms</a></li>
+               <li> <a class="nav-link" href="timer.html">Timer</a></li>
+               <li>   <a class="nav-link" href="stop.html">Stop Watch</a></li>
+                
+          
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Designed By Haniya Fahim</a>
+            </li>
+          </ul>
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+      <div class="clock fixed-center">
+        <span>
+        <div class="hand hour" data-hour-hand></div>
+        <div class="hand minute" data-minute-hand></div>
+        <div class="hand second" data-second-hand></div>
+        <div class="number number1">1</div>
+        <div class="number number2">2</div>
+      </span>
+      <span>
+        <div class="number number3">3</div>
+        <div class="number number4">4</div>
+        <div class="number number5">5</div>
+        <div class="number number6">6</div>
+        <div class="number number7">7</div>
+      </span>
+      <span>
+        <div class="number number8">8</div>
+        <div class="number number9">9</div>
+        <div class="number number10">10</div>
+        <div class="number number11">11</div>
+        <div class="number number12">12</div>
+        </span>
+
+<img src="https://www.utech-edu.com/images/UtechLogo.png" alt="U-Tech"   style="color: white;">
+   
+      </div>
+    
+           
+            
+      <body onload="initClock()">
+
+
+
+        <!--digital clock start-->
+        <div class="datetime fixed-bottom">
+          <div class="date">
+            <span id="dayname">Day</span>,
+            <span id="month">Month</span>
+            <span id="daynum">00</span>,
+            <span id="year">Year</span>
+          </div>
+          <div class="time">
+            <span id="hour">00</span>:
+            <span id="minutes">00</span>:
+            <span id="seconds">00</span>
+            <span id="period">AM</span>
+          </div>
+                  
+  
+        </div>
+        <!--digital clock end-->
+    
+        <script type="text/javascript">
+        function updateClock(){
+          var now = new Date();
+          var dname = now.getDay(),
+              mo = now.getMonth(),
+              dnum = now.getDate(),
+              yr = now.getFullYear(),
+              hou = now.getHours(),
+              min = now.getMinutes(),
+              sec = now.getSeconds(),
+              pe = "AM";
+    
+              if(hou >= 12){
+                pe = "PM";
+              }
+              if(hou == 0){
+                hou = 12;
+              }
+              if(hou > 12){
+                hou = hou - 12;
+              }
+    
+              Number.prototype.pad = function(digits){
+                for(var n = this.toString(); n.length < digits; n = 0 + n);
+                return n;
+              }
+    
+              var months = ["January", "February", "March", "April", "May", "June", "July", "Augest", "September", "October", "November", "December"];
+              var week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+              var ids = ["dayname", "month", "daynum", "year", "hour", "minutes", "seconds", "period"];
+              var values = [week[dname], months[mo], dnum.pad(2), yr, hou.pad(2), min.pad(2), sec.pad(2), pe];
+              for(var i = 0; i < ids.length; i++)
+              document.getElementById(ids[i]).firstChild.nodeValue = values[i];
+        }
+    
+        function initClock(){
+          updateClock();
+          window.setInterval("updateClock()", 1);
+        }
+        </script>
+    
+
+    
+
+
+       
+<script src="index.js"></script>
+
+
+
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js" integrity="sha384-lpyLfhYuitXl2zRZ5Bn2fqnhNAKOAaM/0Kr9laMspuaMiZfGmfwRNFh8HlMy49eQ" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
